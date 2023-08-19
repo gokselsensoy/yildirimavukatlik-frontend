@@ -1,0 +1,126 @@
+<app-adminnavi></app-adminnavi>
+<div class="masthead">
+    <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+        <div class="col-md-8">
+            <h3>Yıldırım</h3>
+            <h3>Avukatlık</h3>
+<div class="card-body">
+  <form [formGroup]="lawyerAddForm">
+      <div class="align-items-center">
+          <div class="card">
+              <div class="card-body">
+                <h6 class="merri">Listeleme önceliği= Avukat(1), Stajyer(2), Personel(3)</h6>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div *ngIf="lawyerImagesPaths.length>0" class="row">
+                              <div id="AddLawyerImagesCarousel" class="carousel carousel-dark slide"
+                                  data-bs-ride="carousel">
+                                  <div class="carousel-inner">
+                                      <div *ngFor="let lawyerImage of lawyerImagesPaths; let i = index"
+                                          class="{{(i == 0) ? 'carousel-item active' : 'carousel-item' }}">
+                                          <img [src]="lawyerImage" height="200" alt="image not found">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div *ngIf="lawyerImagesPaths.length===0">
+                              <img src="assets/personaladd.png" height="200" alt="image not found">
+                          </div>
+                          <div class="row mt-2 ms-2">
+                              <input #file class="form-control" type="file" id="lawyerImagesFiles" accept="image/*"
+                                  (change)="addLawyerImagesToLawyerImagesAndPathList(file.files)">
+                          </div>
+                      </div>
+                      <div class="col-md-1"></div>
+                      <div class="col-md-5">
+                          <div *ngIf="lawyerImagesFiles.length>0" class="row">
+                              <ul class="list-group">
+                                  <li *ngFor="let file of lawyerImagesFiles" class="list-group-item">
+                                      <div class="d-flex justify-content-between">
+                                          <small>{{file.file.name}}</small>
+                                          <span>
+                                              <svg (click)="deleteImageFromLawyerImagesList(file)"
+                                                  xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                  fill="red" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                                                  <path
+                                                      d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+                                              </svg>
+                                          </span>
+                                      </div>
+                                  </li>
+                              </ul>
+                              <p class="text-center text-muted">
+                                  <small>{{lawyerImagesFiles.length}}/1 dosya</small>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="row mt-3">
+                        <div class="col-md-3">
+                            <div class="form-group row align-items-center">
+                                <div class="col-md-9">
+                                  <label for="sortId">Listelenme önceliği</label>
+                                  <div class="form-group">
+                                      <input type="text" id="sortId" 
+                                      formControlName="sortId" class="form-control"
+                                      placeholder="Listelenme önceliği"> 
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                          <div class="col-md-3">
+                              <div class="form-group row align-items-center">
+                                  <div class="col-md-9">
+                                    <label for="name">Avukat Adı</label>
+                                    <div class="form-group">
+                                        <input type="text" id="name" 
+                                        formControlName="name" class="form-control"
+                                        placeholder="Avukat Adı"> 
+                                    </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-md-3">
+                              <div class="form-group row align-items-center">
+                                <div class="col-md-9">
+                                <label for="position">Pozisyon</label>
+                                <div class="form-group">
+                                    <input type="text" id="position" 
+                                    formControlName="position" class="form-control"
+                                    placeholder="Pozisyon"> 
+                                </div>
+                              </div>
+                              </div>
+                          </div>
+                          <div class="col-md-3">
+                              <div class="form-group row align-items-center">
+                                <div class="col-md-9">
+                                  <label for="description">Öz geçmiş</label>
+                                  <div class="form-group">
+                                      <textarea type="text" id="description" 
+                                      formControlName="description" class="form-control"
+                                      placeholder="Öz geçmiş"> > 
+                                    </textarea>
+                                  </div>
+                              </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </form>
+  <div class="row mt-3">
+    <div class="d-flex justify-content-end">
+        <button (click)="add()" type="button" class="btn btn-success me-2">Ekle</button>
+    </div>
+</div>
+
+</div>
+</div>
+</div>    
+</div>
+  
+  
